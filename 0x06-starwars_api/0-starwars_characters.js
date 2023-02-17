@@ -1,6 +1,6 @@
-#!/usr/bin/mode
+#!/usr/bin/node
 
-const request = required('request')
+const request = require('request');
 
 const movieId = process.argv[2];
 
@@ -11,7 +11,7 @@ request(url, async (err, res, body) => {
 
 	const charactersArray = (JSON.parse(res.body).characters);
 	for (const character of charactersArray) {
-		await new Promise((resolve, reject) {
+		await new Promise((resolve, reject) => {
 			request(character, (err, res, body) => {
 				err && console.log(err);
 
